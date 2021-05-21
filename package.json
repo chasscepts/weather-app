@@ -1,7 +1,7 @@
 {
   "name": "weather-app",
   "version": "1.0.0",
-  "description": "Retrieve and Display Weather information from the OpenWeatherMap Api. Users' can search Weather information by location.",
+  "description": "An App to retrieve and display weather information from the OpenWeatherMap API. Users' can choose to search Weather information by providing the name of the city or clicking on a button to use the current city they are in.",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
@@ -35,8 +35,8 @@
     "url": "git+https://github.com/chasscepts/weather-app.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Obetta Francis",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/chasscepts/weather-app/issues"
   },
