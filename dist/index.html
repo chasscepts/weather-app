@@ -10,47 +10,60 @@
   <div id="content">
     <div class="display-board-wrap">
       <div class="display-board">
-        <div class="icon-wrap">
-          <img id="icon" src="http://openweathermap.org/img/wn/01d@2x.png" alt="icon" class="icon">
-        </div>
-        <div class="city-wrap">
-          <div class="city">
-            <span id="city">No Info</span>, <span id="country">No Info</span>
+        <div class="dim"></div>
+        <div class="display-fore">
+          <div class="icon-wrap">
+            <img id="icon" src="http://openweathermap.org/img/wn/01d@2x.png" alt="icon" class="icon">
           </div>
-          <div class="position">
-            [ Longitude: <span id="longitude">No Info</span>,
-            Latitude: <span id="latitude">No Info</span> ]
-          </div>
-        </div>
-        <div class="temperature-wrap">
-          <div class="temperature" id="temperature">0</div>
-          <div class="min-max">
-            <div>Max: <span class="min-max-value" id="max-temp">0</span></div>
-            <div>Min: <span class="min-max-value" id="min-temp">0</span></div>
-          </div>
-        </div>
-        <div class="general">
-          <fieldset class="wind">
-            <legend>wind</legend>
-            <div class="inner">
-              <div class="row">
-                <span class="label">Speed: </span>
-                <span id="wind-speed"></span>
-              </div>
-              <div class="row">
-                <span class="label">Direction: </span>
-                <span id="wind-direction"></span>
-              </div>
+          <div class="city-wrap">
+            <div class="city">
+              <span id="city">No Info</span>, <span id="country">No Info</span>
             </div>
-          </fieldset>
-          <div class="others">
-            <div class="weather" id="weather">
-              <div id="description">No Info</div>
-              <div id="clouds">No Info</div>
-              <div id="humidity">No Info</div>
+            <div class="position">
+              [ Longitude: <span id="longitude">No Info</span>,
+              Latitude: <span id="latitude">No Info</span> ]
             </div>
           </div>
+          <div class="temperature-wrap">
+            <div class="temperature" id="temperature">0</div>
+            <div class="min-max">
+              <div>Max: <span class="min-max-value" id="max-temp">0</span></div>
+              <div>Min: <span class="min-max-value" id="min-temp">0</span></div>
+            </div>
+          </div>
+          <div class="general">
+            <fieldset class="wind">
+              <legend>wind</legend>
+              <div class="inner">
+                <div class="row">
+                  <span class="label">Speed: </span>
+                  <span id="wind-speed"></span>
+                </div>
+                <div class="row">
+                  <span class="label">Direction: </span>
+                  <span id="wind-direction"></span>
+                </div>
+              </div>
+            </fieldset>
+            <div class="others">
+              <div class="weather" id="weather">
+                <div id="description">No Info</div>
+                <div id="clouds">No Info</div>
+                <div id="humidity">No Info</div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="form-outer">
+      <div class="form-wrap">
+        <button id="search-position-btn" class="btn-large blue">Show Current City Weather</button>
+        <div class="or">OR</div>
+        <form action="#" id="seach-form" method="POST">
+          <input type="search" id="city-input" class="text-input" placeholder="Enter City">
+          <input type="submit" value="Get Weather" class="btn-large green">
+        </form>
       </div>
     </div>
   </div>
