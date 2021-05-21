@@ -1,0 +1,174 @@
+$color-white: #fff;
+$color-light: #fff;
+$color-muted: #9da5af;
+$color-blue: #091e42;
+$color-green: #033003;
+$color-faint: #dbd8d7;
+
+$break-points: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+@mixin media-break($break-point: md) {
+  $width: map-get($break-points, $break-point);
+  $break: if($width, $width, 768px);
+
+  @media (min-width: $break) {
+    @content;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 5px;
+}
+
+.clip {
+  position: absolute;
+  clip-path: circle(1px);
+  color: transparent;
+}
+
+.display-board-wrap {
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+
+  .display-board {
+    padding: 0 30px 40px 30px;
+    border: 1px solid $color-faint;
+    border-radius: 10px;
+    background: url(../images/sky.jpg);
+    background-size: 100% 100%;
+    color: $color-light;
+
+    .icon-wrap {
+      display: flex;
+      justify-content: center;
+
+      .icon {
+        width: 80px;
+      }
+    }
+
+    .city-wrap {
+      text-align: center;
+      font-weight: bold;
+
+      .city {
+        font-size: 1.2rem;
+      }
+
+      .position {
+        font-size: 0.5rem;
+      }
+    }
+
+    .temperature-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .temperature {
+        font-weight: bold;
+        font-size: 1.4rem;
+        margin-right: 20px;
+        padding-right: 15px;
+        position: relative;
+
+        &::after {
+          content: '°C';
+          position: absolute;
+          top: -5px;
+          right: 0;
+          font-size: 0.7rem;
+        }
+      }
+
+      .min-max {
+        font-size: 0.7rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        line-height: 1.6;
+
+        .min-max-value {
+          position: relative;
+          padding-right: 5px;
+
+          &::after {
+            content: '°';
+            position: absolute;
+            top: -4px;
+            right: 0;
+          };
+        }
+      }
+    }
+
+    .general {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.6rem;
+      line-height: 1.6;
+      white-space: nowrap;
+      margin-top: 30px;
+
+      .wind {
+        padding: 0 10px 10px 10px;
+        margin: 0;
+        border: 1px solid $color-faint;
+        border-radius: 3px;
+        width: 160px;
+        margin-right: 40px;
+
+        legend {
+          font-weight: bold;
+        }
+
+        .row {
+          display: flex;
+
+          .label {
+            flex: 0 0 80px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
