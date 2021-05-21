@@ -28,6 +28,15 @@ const handleError = (() => {
   };
 })();
 
+const loader = (() => {
+  const cover = document.querySelector('#loader-cover');
+
+  return {
+    show: () => cover.classList.add('open'),
+    hide: () => cover.classList.remove('open'),
+  };
+})();
+
 const displayWeather = (() => {
   const icon = document.querySelector('#icon');
   const city = document.querySelector('#city');
@@ -155,6 +164,8 @@ const searchByLocation = async () => {
     return;
   }
 
+  loader.show();
+
   try {
     const units = temperatureHandler.getUnits();
     const weather = await openweathermap.search(location, units);
@@ -162,9 +173,12 @@ const searchByLocation = async () => {
   } catch (error) {
     handleError(error);
   }
+  loader.hide();
 };
 
 const searchByPosition = async () => {
+  loader.show();
+
   try {
     const units = temperatureHandler.getUnits();
     const { longitude, latitude } = await location.position();
@@ -173,6 +187,7 @@ const searchByPosition = async () => {
   } catch (error) {
     handleError(error);
   }
+  loader.hide();
 };
 
 form.addEventListener('submit', async (e) => {

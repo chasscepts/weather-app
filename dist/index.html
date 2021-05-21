@@ -10,7 +10,7 @@
   <div id="content">
     <div class="display-board-wrap">
       <div class="display-board">
-        <div class="dim"></div>
+        <div class="dim board-dim"></div>
         <div class="display-fore">
           <div class="icon-wrap">
             <img id="icon" src="http://openweathermap.org/img/wn/01d@2x.png" alt="icon" class="icon">
@@ -84,7 +84,18 @@
       </div>
     </div>
   </div>
+  <div id="loader-cover" class="popup cover">
+    <div class="dim"></div>
+    <div class="dim"></div>
+    <div class="dim"></div>
+    <div class="center-child">
+      <div class="loader-wrap">
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </div>
+  </div>
   <div id="error-cover" class="popup cover">
+    <div class="dim"></div>
     <div class="dim"></div>
     <div class="center-child">
       <div class="error-wrap">
