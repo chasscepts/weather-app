@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather</title>
 </head>
-<body>
+<body class="clear">
   <div id="content">
     <div class="display-board-wrap">
       <div class="display-board">
@@ -37,11 +37,11 @@
               <div class="inner">
                 <div class="row">
                   <span class="label">Speed: </span>
-                  <span id="wind-speed"></span>
+                  <span id="wind-speed">No Info</span>
                 </div>
                 <div class="row">
                   <span class="label">Direction: </span>
-                  <span id="wind-direction"></span>
+                  <span id="wind-direction">No Info</span>
                 </div>
               </div>
             </fieldset>
@@ -58,11 +58,23 @@
     </div>
     <div class="form-outer">
       <div class="form-wrap">
+        <fieldset class="temperature-unit-fieldset">
+          <legend>Temperature Unit</legend>
+          <div class="temperature-unit-wrap">
+            <label class="row">
+              <input type="radio" name="temperature_unit" id="celsius" checked>
+              <span class="label">Celsius</span>
+            </label>
+            <label class="row">
+              <input type="radio" name="temperature_unit" id="fahrenheit">
+              <span class="label">Fahrenheit</span>
+            </label>
+          </div>
+        </fieldset>
         <button id="search-position-btn" class="btn-large blue">Show Current City Weather</button>
         <div class="or">OR</div>
-        <form action="#" id="seach-form" method="POST">
+        <form action="#" id="search-form" method="POST">
           <input type="search" id="city-input" class="text-input" placeholder="Enter City">
-          <input type="submit" value="Get Weather" class="btn-large green">
         </form>
       </div>
     </div>
