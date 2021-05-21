@@ -2,22 +2,12 @@ import openweathermap from './open-weather-map';
 import location from './location';
 import './assets/css/style.scss';
 
-const getWeatherInfo = async (location) => {
-  try {
-    const result = await openweathermap.search(location);
-    console.log(result);
-  } catch (err) {
-    console.log(err);
-  }
-};
+const positionBtn = document.querySelector('#search-position-btn');
+const form = document.querySelector('#search-form');
+const cityInput = document.querySelector('#city-input');
 
-const getWeatherInfoByPosition = async (longitude, latitude) => {
-  try {
-    const result = await openweathermap.searchByPosition(longitude, latitude);
-    console.log(result);
-  } catch (err) {
-    console.log(err);
-  }
+const handleError = (err) => {
+  console.log(err);
 };
 
 const displayWeather = (() => {
@@ -52,33 +42,59 @@ const displayWeather = (() => {
   };
 })();
 
-const sampleWeather = {
-  city: 'Ibadan',
-  clouds: 'Cloudiness: 83%',
-  country: 'NG',
-  description: 'Broken Clouds',
-  humidity: 'Humidity: 48%',
-  image: 'http://openweathermap.org/img/wn/04d@2x.png',
-  latitude: 7.4318,
-  longitude: 3.8994,
-  maxtemprature: 34,
-  minTemperature: 34,
-  temperature: 34,
-  windDirection: 'South West',
-  windSpeed: '9.6 km/h',
+const temperatureUnitSelector = (() => {
+  const celsiusRadio = document.querySelector('#celsius');
+  const fahrenheitRadio = document.querySelector('#fahrenheit');
+
+  let units = 'metric';
+
+  celsiusRadio.addEventListener('change', () => {
+    if (celsiusRadio.checked) {
+      units = 'metric';
+    }
+  });
+
+  fahrenheitRadio.addEventListener('change', () => {
+    if (fahrenheitRadio.checked) {
+      units = 'imperial';
+    }
+  });
+
+  return {
+    units: () => units,
+  };
+})();
+
+const searchByLocation = async () => {
+  const location = cityInput.value;
+  if (!location) {
+    return;
+  }
+
+  try {
+    const weather = await openweathermap.search(location);
+    displayWeather(weather);
+  } catch (error) {
+    handleError(error);
+  }
 };
 
-displayWeather(sampleWeather);
+const searchByPosition = async () => {
+  try {
+    const position = await location.position();
+    const weather = await openweathermap.searchByPosition(position.longitude, position.latitude);
+    displayWeather(weather);
+  } catch (error) {
+    handleError(error);
+  }
+};
 
-// getWeatherInfo('London,uk');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  searchByLocation();
+  return false;
+});
 
-// location.position()
-//   .then((position) => {
-//     console.log(position);
-//     try {
-//       getWeatherInfoByPosition(position.longitude, position.latitude);
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   })
-//   .catch((err) => console.log(err));
+positionBtn.addEventListener('click', async () => {
+  searchByPosition();
+});

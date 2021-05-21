@@ -20,8 +20,6 @@ const windDirection = (num) => {
   return 'North';
 };
 
-const convertTemperature = (temp) => Math.round(temp - 273.15);
-
 const convertSpeed = (speed) => `${(Math.round(speed * 36) / 10)} km/h`;
 
 const capitalize = (text) => text.split(' ').map((w) => `${w[0].toUpperCase()}${w.substring(1)}`).join(' ');
@@ -33,11 +31,12 @@ const formatWeatherInfo = (raw) => (
     image: iconUrl(raw.weather[0].icon),
     longitude: raw.coord.lon,
     latitude: raw.coord.lat,
+    main: raw.weather[0],
     description: capitalize(raw.weather[0].description),
     clouds: `Cloudiness: ${raw.clouds.all}%`,
-    temperature: convertTemperature(raw.main.temp),
-    maxtemprature: convertTemperature(raw.main.temp_max),
-    minTemperature: convertTemperature(raw.main.temp_min),
+    temperature: raw.main.temp,
+    maxtemprature: raw.main.temp_max,
+    minTemperature: raw.main.temp_min,
     humidity: `Humidity: ${raw.main.humidity}%`,
     windSpeed: convertSpeed(raw.wind.speed),
     windDirection: windDirection(raw.wind.deg),
