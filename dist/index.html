@@ -25,7 +25,12 @@
             </div>
           </div>
           <div class="temperature-wrap">
-            <div class="temperature" id="temperature">0</div>
+            <div class="temperature">
+              <span id="temperature">0</span>
+              <div class="superscript">
+                <span>°</span><span id="temp-unit">C</span>
+              </div>
+            </div>
             <div class="min-max">
               <div>Max: <span class="min-max-value" id="max-temp">0</span></div>
               <div>Min: <span class="min-max-value" id="min-temp">0</span></div>
@@ -71,11 +76,21 @@
             </label>
           </div>
         </fieldset>
-        <button id="search-position-btn" class="btn-large blue">Show Current City Weather</button>
+        <button id="search-position-btn" class="btn-large">Display Current City Information</button>
         <div class="or">OR</div>
         <form action="#" id="search-form" method="POST">
           <input type="search" id="city-input" class="text-input" placeholder="Enter City">
         </form>
+      </div>
+    </div>
+  </div>
+  <div id="error-cover" class="popup cover">
+    <div class="dim"></div>
+    <div class="center-child">
+      <div class="error-wrap">
+        <h3 class="error-heading">Error!</h3>
+        <div class="error-intro">Application has encoutered an error. Additional information may be available in the box below.</div>
+        <div id="error-msg" class="error-details">This error contains no additional information</div>
       </div>
     </div>
   </div>

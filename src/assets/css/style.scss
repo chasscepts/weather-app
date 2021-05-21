@@ -2,7 +2,7 @@ $color-white: #fff;
 $color-light: #fff;
 $color-muted: #9da5af;
 $color-blue: #091e42;
-$color-green: #033003;
+$color-alert: #800;
 $color-faint: #dbd8d7;
 
 $break-points: (
@@ -100,6 +100,14 @@ fieldset {
   color: transparent;
 }
 
+.cover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+
 .dim {
   position: absolute;
   top: 0;
@@ -110,8 +118,25 @@ fieldset {
   border-radius: 10px;
 }
 
+.center-child {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  display: none;
+
+  &.open {
+    display: block;
+  }
+}
+
 .display-board-wrap {
-  padding: 10px;
+  padding: 5px 10px;
   display: flex;
   justify-content: center;
 
@@ -162,8 +187,7 @@ fieldset {
         padding-right: 15px;
         position: relative;
 
-        &::after {
-          content: '°C';
+        .superscript {
           position: absolute;
           top: -5px;
           right: 0;
@@ -220,11 +244,11 @@ fieldset {
 .form-outer {
   display: flex;
   justify-content: center;
-  padding: 10px 0;
+  padding: 5px 0;
 
   .form-wrap {
     width: 360px;
-    padding: 20px;
+    padding: 10px 20px;
     border: 1px solid $color-faint;
     border-radius: 5px;
     background-color: $color-light;
@@ -265,17 +289,11 @@ fieldset {
       cursor: pointer;
       outline: none;
       border: none;
+      border-radius: 10px;
+      background-color: $color-blue;
 
       &:hover {
         opacity: 0.8;
-      }
-
-      &.blue {
-        background-color: $color-blue;
-      }
-
-      &.green {
-        background-color: $color-green;
       }
     }
 
@@ -293,5 +311,35 @@ fieldset {
       border: none;
       outline: none;
     }
+  }
+}
+
+.error-wrap {
+  width: 400px;
+  padding: 10px 20px;
+  border: 1px solid $color-faint;
+  border-radius: 5px;
+  background-color: #f1f5f8;
+  line-height: 1.6;
+
+  .error-heading {
+    color: $color-alert;
+  }
+
+  .error-intro {
+    margin-bottom: 10px;
+    font-size: 0.7rem;
+  }
+
+  .error-details {
+    padding: 10px;
+    font-size: 0.6rem;
+    font-weight: bold;
+    color: $color-alert;
+    border-radius: 5px;
+    border: 1px solid $color-faint;
+    background-color: $color-light;
+    max-height: 100px;
+    overflow-y: auto;
   }
 }

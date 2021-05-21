@@ -1,9 +1,9 @@
 const apiKey = '9b3214bc67fa5d5b9d3c96cbc99c3a54';
 const baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
-const getUrl = (location) => `${baseUrl}?q=${location}&APPID=${apiKey}`;
+const getUrl = (location, units) => `${baseUrl}?q=${location}&units=${units}&APPID=${apiKey}`;
 
-const getPositionUrl = (longitude, latitude) => `${baseUrl}?lat=${latitude}&lon=${longitude}&APPID=${apiKey}`;
+const getPositionUrl = (longitude, latitude, units) => `${baseUrl}?lat=${latitude}&lon=${longitude}&units=${units}&APPID=${apiKey}`;
 
 const iconUrl = (icon) => `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
@@ -31,7 +31,7 @@ const formatWeatherInfo = (raw) => (
     image: iconUrl(raw.weather[0].icon),
     longitude: raw.coord.lon,
     latitude: raw.coord.lat,
-    main: raw.weather[0],
+    main: raw.weather[0].main,
     description: capitalize(raw.weather[0].description),
     clouds: `Cloudiness: ${raw.clouds.all}%`,
     temperature: raw.main.temp,
@@ -44,9 +44,9 @@ const formatWeatherInfo = (raw) => (
 );
 
 const openweathermap = {
-  search(location) {
+  search(location, units) {
     return new Promise((resolve, reject) => {
-      fetch(getUrl(location), { mode: 'cors' })
+      fetch(getUrl(location, units), { mode: 'cors' })
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -57,9 +57,9 @@ const openweathermap = {
         .catch((err) => reject(err));
     });
   },
-  searchByPosition(longitude, latitude) {
+  searchByPosition(longitude, latitude, units) {
     return new Promise((resolve, reject) => {
-      fetch(getPositionUrl(longitude, latitude), { mode: 'cors' })
+      fetch(getPositionUrl(longitude, latitude, units), { mode: 'cors' })
         .then((response) => {
           if (response.ok) {
             return response.json();
