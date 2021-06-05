@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather</title>
+</head>
+<body class="clear">
+  <div id="content">
+    <div class="display-board-wrap">
+      <div class="display-board">
+        <div class="dim board-dim"></div>
+        <div class="display-fore">
+          <div class="icon-wrap">
+            <img id="icon" src="http://openweathermap.org/img/wn/01d@2x.png" alt="icon" class="icon">
+          </div>
+          <div class="city-wrap">
+            <div class="city">
+              <span id="city">No Info</span>, <span id="country">No Info</span>
+            </div>
+            <div class="position">
+              [ Longitude: <span id="longitude">No Info</span>,
+              Latitude: <span id="latitude">No Info</span> ]
+            </div>
+          </div>
+          <div class="temperature-wrap">
+            <div class="temperature">
+              <span id="temperature">0</span>
+              <div class="superscript">
+                <span>°</span><span id="temp-unit">C</span>
+              </div>
+            </div>
+            <div class="min-max">
+              <div>Max: <span class="min-max-value" id="max-temp">0</span></div>
+              <div>Min: <span class="min-max-value" id="min-temp">0</span></div>
+            </div>
+          </div>
+          <div class="general">
+            <fieldset class="wind">
+              <legend>wind</legend>
+              <div class="inner">
+                <div class="row">
+                  <span class="label">Speed: </span>
+                  <span id="wind-speed">No Info</span>
+                </div>
+                <div class="row">
+                  <span class="label">Direction: </span>
+                  <span id="wind-direction">No Info</span>
+                </div>
+              </div>
+            </fieldset>
+            <div class="others">
+              <div class="weather" id="weather">
+                <div id="description">No Info</div>
+                <div id="clouds">No Info</div>
+                <div id="humidity">No Info</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-outer">
+      <div class="form-wrap">
+        <fieldset class="temperature-unit-fieldset">
+          <legend>Temperature Unit</legend>
+          <div class="temperature-unit-wrap">
+            <label class="row">
+              <input type="radio" name="temperature_unit" id="celsius" checked>
+              <span class="label">Celsius</span>
+            </label>
+            <label class="row">
+              <input type="radio" name="temperature_unit" id="fahrenheit">
+              <span class="label">Fahrenheit</span>
+            </label>
+          </div>
+        </fieldset>
+        <button id="search-position-btn" class="btn-large">Display Current City Information</button>
+        <div class="or">OR</div>
+        <form action="#" id="search-form" method="POST">
+          <input type="search" id="city-input" class="text-input" placeholder="Enter City">
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="loader-cover" class="popup cover">
+    <div class="dim"></div>
+    <div class="dim"></div>
+    <div class="dim"></div>
+    <div class="center-child">
+      <div class="loader-wrap">
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </div>
+  </div>
+  <div id="error-cover" class="popup cover">
+    <div class="dim"></div>
+    <div class="dim"></div>
+    <div class="center-child">
+      <div class="error-wrap">
+        <h3 class="error-heading">Error!</h3>
+        <div class="error-intro">Application has encoutered an error. Additional information may be available in the box below.</div>
+        <div id="error-msg" class="error-details">This error contains no additional information</div>
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
